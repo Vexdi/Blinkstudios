@@ -1,377 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Blink Studios</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blink Studios</title>
 
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
-    <style>
-        /* Global Styles */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #1a1a1a; /* Dark background */
-            color: #f0f0f0; /* Light text */
-            text-align: center;
-            overflow-x: hidden;
-        }
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        /* Header Section */
-        header {
-            background-color: #262626; /* Slightly lighter than the background */
-            padding: 30px 0;
-            border-bottom: 3px solid #319ADC; /* Accent color */
-            position: relative;
-        }
+  <style>
+    :root {
+      --black: #0b0d10;
+      --dark-grey: #141821;
+      --grey: #1f2430;
+      --light-grey: #9aa4b2;
+      --blue: #3b82f6;
+    }
 
-        header img {
-            width: 120px;
-            height: auto;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
 
-        header h1 {
-            margin: 20px 0;
-            font-size: 2.8em;
-            color: #319ADC; /* Accent color */
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        nav {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-        }
+    body {
+      background: radial-gradient(circle at top, var(--grey), var(--black));
+      color: #ffffff;
+      line-height: 1.6;
+    }
 
-        nav a {
-            text-decoration: none;
-            color: #f0f0f0;
-            font-size: 1.2em;
-            padding: 10px 20px;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
+    .logo-wrapper {
+      position: sticky;
+      top: 8px;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
 
-        nav a:hover {
-            border-bottom: 2px solid #319ADC; /* Accent color */
-        }
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      object-fit: cover;
+      transform-origin: center;
+      transition: transform 0.1s linear;
+    }
 
-        /* Hamburger Menu */
-        .hamburger {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 35px;
-            height: 35px;
-            background-color: transparent;
-            border: 1px solid #f0f0f0;
-            border-radius: 5px;
-            padding: 5px;
-            cursor: pointer;
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
+    header {
+      padding: 1.5rem 2rem 4.5rem;
+      text-align: center;
+    }
 
-        .hamburger div {
-            width: 100%;
-            height: 4px;
-            background-color: #f0f0f0;
-            border-radius: 5px;
-            margin: 6px 0;
-        }
+    .title {
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin-top: 0.4rem;
+      margin-bottom: 0.8rem;
+    }
 
-        .hamburger:hover {
-            background-color: #f0f0f0;
-            border: 1px solid #f0f0f0;
-        }
+    .blink { color: #ffffff; }
+    .studios { color: var(--blue); }
 
-        .hamburger:hover div {
-            background-color: #262626;
-        }
+    .subtitle {
+      color: var(--light-grey);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-        /* Socials Section */
-        .socials-container {
-            position: absolute;
-            top: 20px;
-            right: -500px; /* Initially off-screen */
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-            background-color: #1a1a1a;
-            padding: 10px;
-            border-radius: 10px;
-        }
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
 
-        .socials-container.open {
-            right: 70px; /* Show the container */
-        }
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
 
-        .socials-text {
-            margin-right: 15px;
-            opacity: 0;
-            font-size: 1.2em;
-            color: #f0f0f0;
-            transition: opacity 0.3s ease;
-        }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
 
-        .socials-container.open .socials-text {
-            opacity: 1; /* Show text when open */
-        }
+    .card {
+      background: linear-gradient(180deg, var(--dark-grey), var(--black));
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        .social-icons {
-            display: flex;
-            gap: 15px;
-        }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
 
-        .social-icons a {
-            text-decoration: none;
-            color: #f0f0f0;
-            border: 1px solid #f0f0f0;
-            border-radius: 5px;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
+    .card h3 {
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+    }
 
-        .social-icons a img {
-            width: 40px;
-            height: 40px;
-        }
+    .card p {
+      color: var(--light-grey);
+      font-size: 0.95rem;
+    }
 
-        .social-icons a:hover {
-            background-color: #f0f0f0;
-            color: #262626;
-        }
+    .cta {
+      background: linear-gradient(135deg, rgba(59,130,246,0.15), transparent);
+      border: 1px solid rgba(59,130,246,0.4);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
 
-        /* Main Sections */
-        .section {
-            padding: 80px 20px;
-        }
+    .cta h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
 
-        /* About Section */
-        .about {
-            background-color: #333;
-        }
+    .cta p {
+      color: var(--light-grey);
+      margin-bottom: 2rem;
+    }
 
-        .about h2 {
-            font-size: 2.5em;
-            color: #319ADC; /* Accent color */
-        }
+    .cta a {
+      display: inline-block;
+      padding: 0.8rem 1.6rem;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
 
-        .about p {
-            font-size: 1.2em;
-            max-width: 900px;
-            margin: 20px auto;
-            line-height: 1.6;
-        }
+    .cta a:hover {
+      background: #2563eb;
+      transform: scale(1.05);
+    }
 
-        /* Featured Games Section */
-        .games {
-            background-color: #1a1a1a;
-        }
+    footer {
+      padding: 2rem;
+      text-align: center;
+      color: var(--light-grey);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
 
-        .games h2 {
-            font-size: 2.5em;
-            color: #319ADC; /* Accent color */
-        }
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-bottom: 1rem;
+    }
 
-        .games-grid {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 50px auto;
-        }
+    .footer-socials img {
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
 
-        .game-item {
-            background-color: #262626;
-            padding: 20px;
-            border-radius: 8px;
-            width: 300px;
-            transition: transform 0.3s ease;
-        }
-
-        .game-item img {
-            width: 100%;
-            border-radius: 5px;
-        }
-
-        .game-item h3 {
-            margin-top: 15px;
-            font-size: 1.5em;
-            color: #f0f0f0;
-        }
-
-        .game-item:hover {
-            transform: scale(1.05);
-        }
-
-        /* News Section */
-        .news {
-            background-color: #333;
-        }
-
-        .news h2 {
-            font-size: 2.5em;
-            color: #319ADC; /* Accent color */
-        }
-
-        .news-grid {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 900px;
-            margin: 50px auto;
-        }
-
-        .news-item {
-            background-color: #262626;
-            padding: 20px;
-            margin-bottom: 30px;
-            border-radius: 5px;
-            width: 100%;
-            text-align: left;
-        }
-
-        .news-item h3 {
-            color: #319ADC; /* Accent color */
-            font-size: 1.6em;
-        }
-
-        .news-item p {
-            font-size: 1.1em;
-            margin: 10px 0;
-        }
-
-        .news-item .date {
-            font-size: 0.9em;
-            color: #aaa;
-            text-align: right;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #262626;
-            padding: 30px;
-            border-top: 3px solid #319ADC; /* Accent color */
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 1em;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .games-grid {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .news-grid {
-                width: 100%;
-            }
-        }
-    </style>
+    .footer-socials a:hover img {
+      transform: translateY(-3px);
+      opacity: 0.85;
+    }
+  </style>
 </head>
+
 <body>
 
-    <!-- Header -->
-    <header>
-        <img src="BlinkStudioLogo.png" alt="Blink Studios Logo">
-        <h1>Blink Studios</h1>
-        <nav>
-            <a href="#about">About Us</a>
-            <a href="#games">Featured Games</a>
-            <a href="#news">News</a>
-        </nav>
+  <div class="logo-wrapper">
+    <img src="logo.png" alt="Blink Studios Logo" class="logo" id="logo">
+  </div>
 
-        <!-- Hamburger Menu Button -->
-        <button class="hamburger" onclick="toggleSocials()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </button>
-    </header>
+  <header>
+    <h1 class="title">
+      <span class="blink">Blink</span> <span class="studios">Studios</span>
+    </h1>
+    <p class="subtitle">
+      Crafting focused, atmospheric games with a strong identity and sharp design.
+    </p>
+  </header>
 
-    <!-- Socials Section -->
-    <div class="socials-container" id="socials">
-        <div class="social-icons">
-            <a href="https://discord.gg/dhPPKGBEkk"><img src="discord-icon.png" alt="Discord"></a>
-            <a href="https://www.tiktok.com/@bink.studio"><img src="tiktok-icon.png" alt="TikTok"></a>
-            <a href="https://www.instagram.com/blinkstudio.s/"><img src="instagram-icon.png" alt="Instagram"></a>
-            <a href="https://youtube.com"><img src="youtube-icon.png" alt="YouTube"></a>
-            <a href="https://x.com/BlinkStudio_s"><img src="x-icon.png" alt="X"></a>
-        </div>
+  <section>
+    <h2 class="section-title">What We Do</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Game Development</h3>
+        <p>We build immersive experiences with tight mechanics, distinctive visuals, and deliberate pacing.</p>
+      </div>
+      <div class="card">
+        <h3>Creative Direction</h3>
+        <p>Every project starts with a clear vision — atmosphere, tone, and player emotion come first.</p>
+      </div>
+      <div class="card">
+        <h3>Indie Focus</h3>
+        <p>Small teams, fast iteration, and bold ideas without corporate noise.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Our Games</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Game 1</h3>
+        <img src="game1.jpg" style="width:100%; border-radius:12px; margin-top:1rem;">
+      </div>
+      <div class="card">
+        <h3>Game 2</h3>
+        <img src="game2.jpg" style="width:100%; border-radius:12px; margin-top:1rem;">
+      </div>
+      <div class="card">
+        <h3>Blink-Network</h3>
+        <img src="blink-network.jpg" style="width:100%; border-radius:12px; margin-top:1rem;">
+      </div>
     </div>
 
-    <!-- About Section -->
-    <section class="section about" id="about">
-        <h2>About Us</h2>
-        <p>Blink Studios is an indie game development studio dedicated to crafting immersive gaming experiences. I work tirelessly to bring unique and innovative ideas to life, ensuring that every project I take on pushes the boundaries of creativity and gameplay.</p>
-    </section>
+    <div class="cta">
+      <h2>We move fast. We build sharp.</h2>
+      <p>Interested in our work or collaborating with Blink Studios?</p>
+      <a href="mailto:contact@blinkstudios.com">Get in Touch</a>
+    </div>
+  </section>
 
-    <!-- Featured Games Section -->
-    <section class="section games" id="games">
-        <h2>Featured Games</h2>
-        <div class="games-grid">
-            <div class="game-item">
-                <img src="game1.png" alt="Game 1">
-                <h3>???</h3>
-                <p>What could this be?</p>
-            </div>
-            <div class="game-item">
-                <img src="game2.png" alt="Game 2">
-                <h3>???</h3>
-                <p>Another weird box</p>
-            </div>
-            <div class="game-item">
-                <img src="game3.png" alt="Game 3">
-                <h3>???</h3>
-                <p>Hmmm...</p>
-            </div>
-        </div>
-    </section>
+  <footer>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/blinkstudio.s/" target="_blank" aria-label="Discord">
+        <img src="social1.png" width="36">
+      </a>
+      <a href="https://www.tiktok.com/@bink.studio" target="_blank" aria-label="X / Twitter">
+        <img src="social2.png" width="36">
+      </a>
+      <a href="https://x.com/BlinkStudio_s" target="_blank" aria-label="YouTube">
+        <img src="social3.png" width="36">
+      </a>
+      <a href="https://discord.com/invite/dhPPKGBEkk" target="_blank" aria-label="TikTok">
+        <img src="social4.png" width="36">
+      </a>
+      <a href="https://www.youtube.com/@BlinkStudioss" target="_blank" aria-label="Instagram">
+        <img src="social5.png" width="36">
+      </a>
+    </div>
+    © 2025 Blink Studios. All rights reserved.
+  </footer>
 
-    <!-- News Section -->
-    <section class="section news" id="news">
-        <h2>Latest News</h2>
-        <div class="news-grid">
-            <div class="news-item">
-                <h3>More news soon!</h3>
-                <p>Keep a close eye on the news or join our discord!</p>
-                <div class="date">January 22, 2025</div>
-            </div>
-            <div class="news-item">
-                <h3>Blink Studios is up and running!</h3>
-                <p>We’re excited to announce the start of Blink Studios!</p>
-                <div class="date">January 20, 2025</div>
-            </div>
-        </div>
-    </section>
+  <script>
+    const logo = document.getElementById('logo');
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Blink Studios. All rights reserved.</p>
-    </footer>
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const maxScroll = 240;
+      const progress = Math.min(scrollY / maxScroll, 1);
+      const scale = 1 - progress * 0.5;
+      logo.style.transform = `scale(${scale})`;
+    });
+  </script>
 
-    <script>
-        function toggleSocials() {
-            const socials = document.getElementById("socials");
-            socials.classList.toggle("open");
-        }
-    </script>
 </body>
 </html>
