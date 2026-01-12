@@ -197,6 +197,16 @@
       transform: translateY(-3px);
       opacity: 0.85;
     }
+
+    .card-link {
+      text-decoration: none; /* remove underline */
+      color: inherit; /* inherit the color from the card */
+      display: block; /* ensures the entire card is clickable */
+    }
+
+    .card-link h3 {
+      color: #ffffff; /* force white text */
+    }
   </style>
 </head>
 
@@ -244,7 +254,7 @@
         <h3>Roblox</h3>
         <img src="roblox.jpg" style="width:100%; border-radius:12px; margin-top:1rem;">
       </div>
-        <a href="/server.html" class="card-link">
+        <a href="/server" class="card-link">
           <div class="card">
         <h3>Blink-Network</h3>
     <img src="blink-network.jpg" style="width:100%; border-radius:12px; margin-top:1rem;">
