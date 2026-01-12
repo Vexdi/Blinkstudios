@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blink Network — Minecraft Server</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #0b0d10;
+      --dark-grey: #141821;
+      --grey: #1f2430;
+      --light-grey: #9aa4b2;
+      --blue: #3b82f6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, var(--grey), var(--black));
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Sticky logo */
+    .logo-wrapper {
+      position: sticky;
+      top: 8px;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+    }
+
+    .logo-wrapper a {
+      pointer-events: auto;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      transition: transform 0.1s linear;
+    }
+
+    /* Hero */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: var(--light-grey);
+      max-width: 520px;
+      margin-bottom: 2rem;
+    }
+
+    .server-ip {
+      background: linear-gradient(135deg, rgba(59,130,246,0.2), transparent);
+      border: 1px solid rgba(59,130,246,0.5);
+      border-radius: 14px;
+      padding: 1.2rem 1.6rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: inline-block;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, var(--dark-grey), var(--black));
+      border-radius: 20px;
+      padding: 2.5rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .hero-card h3 {
+      margin-bottom: 1rem;
+    }
+
+    /* Sections */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature {
+      background: linear-gradient(180deg, var(--dark-grey), var(--black));
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: transform 0.25s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-6px);
+    }
+
+    .feature h4 {
+      margin-bottom: 0.6rem;
+    }
+
+    .feature p {
+      color: var(--light-grey);
+      font-size: 0.95rem;
+    }
+
+    /* CTA */
+    .cta {
+      background: linear-gradient(135deg, rgba(59,130,246,0.18), transparent);
+      border: 1px solid rgba(59,130,246,0.4);
+      border-radius: 22px;
+      padding: 3.5rem 2rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .cta h2 {
+      font-size: 2.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.9rem 1.8rem;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .cta a:hover {
+      background: #2563eb;
+      transform: scale(1.05);
+    }
+
+    footer {
+      padding: 2rem;
+      text-align: center;
+      color: var(--light-grey);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .server-ip {
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="logo-wrapper">
+    <a href="index.html">
+      <img src="logo.png" class="logo" id="logo" alt="Blink Logo">
+    </a>
+  </div>
+
+  <div class="hero">
+    <div>
+      <h1>Blink Network</h1>
+      <p>
+        A high-quality Minecraft network focused on fair gameplay,
+        custom systems, and long-term progression — no pay-to-win,
+        no chaos.
+      </p>
+      <div class="server-ip">play.blink-network.net</div>
+    </div>
+
+    <div class="hero-card">
+      <h3>Why Blink?</h3>
+      <p>
+        Built with performance-first plugins, balanced progression,
+        and active development. Every system exists for gameplay —
+        not monetization.
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <h2 class="section-title">Server Features</h2>
+    <div class="features">
+      <div class="feature">
+        <h4>Lifesteal</h4>
+        <p>High-risk PvP where hearts are currency. Kill to survive.</p>
+      </div>
+      <div class="feature">
+        <h4>Custom Systems</h4>
+        <p>Unique mechanics, abilities, and events you won’t find elsewhere.</p>
+      </div>
+      <div class="feature">
+        <h4>No Pay-to-Win</h4>
+        <p>Skill, strategy, and time matter more than money.</p>
+      </div>
+      <div class="feature">
+        <h4>Optimized Performance</h4>
+        <p>Lag-free gameplay with carefully tuned plugins.</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <h2>Join the Network</h2>
+      <p>Jump in now or join the community on Discord.</p>
+      <a href="https://discord.com/invite/dhPPKGBEkk" target="_blank">Join Discord</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Blink Studios — Blink Network
+  </footer>
+
+  <script>
+    const logo = document.getElementById('logo');
+
+    window.addEventListener('scroll', () => {
+      const progress = Math.min(window.scrollY / 240, 1);
+      logo.style.transform = `scale(${1 - progress * 0.5})`;
+    });
+  </script>
+
+</body>
+</html>
